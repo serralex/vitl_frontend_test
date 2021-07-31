@@ -1,10 +1,21 @@
+import { useSelector } from 'react-redux'
+
+import ProductList from "../../features/products/components/ProductList"
 import { useProducts } from "../../features/products/hooks"
-import ProductList from "../../components/ProductList"
+import { Container, Row } from '../../resources/styles/globalStyles'
+
 
 const StorePage = () =>{
     const {list, config} = useProducts()
     return(
-        <ProductList list={list}/>
+        <>
+            <Container>
+                <Row>
+                    <ProductList list={list}/>
+                </Row>
+            </Container>
+        </>
+
     )
 }
 

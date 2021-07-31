@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'SofiaPro';
+    src: url("../fonts/SofiaProRegular.otf") format("opentype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'SofiaPro';
+    src: url("../fonts/SofiaProSemiBold.otf") format("opentype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Hurme';
+    src: url("../fonts/Hurme.otf") format("opentype");
+    font-weight: normal;
+}
+
+body{
+    margin:0px;
+    font-family: SofiaPro,Helvetica,Arial,Sans-Serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #333;
+}
+
+h1,h2,h3,h4{
+    font-family: Hurme, SofiaPro,Helvetica,Arial,Sans-Serif;
+    margin: 0;
+}
+
+h1{
+    font-size: 26px;
+    line-height: 32px;
+}

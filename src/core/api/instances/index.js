@@ -1,7 +1,8 @@
 import axios from "axios";
+import { BASE_URL } from "../constants";
 
 const instance = axios.create({
-  baseURL: "https://vitl-static-api.s3-eu-west-1.amazonaws.com" 
+  baseURL: BASE_URL
 });
 
 export default instance
