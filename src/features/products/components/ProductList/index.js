@@ -16,7 +16,6 @@ const ProductList = ({list}) =>{
 
 
     const handleClick = (product) =>{
-        console.log('f')
         const isProductAlready = items.some(e => e.name === product.name)
 
         const updatedNutrientsSum = calcNutrientsSum([...items, product])
