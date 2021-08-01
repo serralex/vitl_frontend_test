@@ -38,8 +38,8 @@ export const Divider = styled.div`
   display: inline-block;
   width: 70px;
   height: 2px;
-  margin-top: 30px;
-  margin-bottom: 25px;
+  margin-top: ${props => props.marginTop || '30px'}};
+  margin-bottom: ${props => props.marginTop || '25px'}};
   background-color: ${STYLE_CONSTANTS.primaryColor}
 `
 
@@ -47,3 +47,12 @@ export const Col2 = styled.div`
   width: 50%;
   display:flex;
 `
+
+export const Heading3 = styled.div`
+  font-family: SofiaPro,Helvetica,Arial,Sans-Serif;
+  font-weight:bold;
+  font-size: 22px;
+  line-height: 30px;
+`
+
+

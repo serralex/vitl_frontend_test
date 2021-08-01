@@ -3,6 +3,7 @@ import { removeBasketItem } from '../../../../features/basket/slices'
 import BasketItem from '../../../../ui/basket/BasketItem'
 
 import { formatProductItem } from './config'
+import { StyledBasket } from './style'
 
 const BasketList = () =>{
     
@@ -15,17 +16,21 @@ const BasketList = () =>{
 
     return(
         <>
-            <h1>Basket</h1>
-            {items.map(({name,price,nutrients}) =>{ 
-                const formatedProductItem = formatProductItem({name, price, nutrients, onHandleClick:handleClick})
+            <StyledBasket>
+                <h1 style={{fontSize:48, margin: '30px 0px'}}>Your basket</h1>
+                <ul style={{padding: 15}}>
+                    {items.map(({name,price,nutrients}) =>{ 
+                        const formatedProductItem = formatProductItem({name, price, nutrients, onHandleClick:handleClick})
 
-                return(
-                    <div key = {name}>
-                        <BasketItem {...formatedProductItem}/>
-                    </div>
-                )
-            })
-            } 
+                        return(
+                            <li key = {name}>
+                                <BasketItem {...formatedProductItem}/>
+                            </li>
+                        )
+                    })
+                    } 
+                </ul>
+            </StyledBasket>
         </>
     )
 }

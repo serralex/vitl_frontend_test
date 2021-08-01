@@ -2,7 +2,8 @@ import { ApiProvider } from "./core/api/conexts"
 import { ReduxProvider } from "./core/redux"
 import AppRouter from "./core/router"
 
-import Modal from './ui/Modal'
+import CustomDialog from "./ui/Dialog"
+import OffCanvas from "./ui/OffCanvas"
 import BasketList from './features/basket/components/BasketList'
 
 import './resources/styles/global.css'
@@ -11,7 +12,8 @@ const App = () => {
   return (
     <ReduxProvider>
         <ApiProvider>
-          <Modal content= {<BasketList/>}/>
+          <CustomDialog/>
+          <OffCanvas content= {<BasketList/>}/>
           <AppRouter/>
         </ApiProvider>
     </ReduxProvider>

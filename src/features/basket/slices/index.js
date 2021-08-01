@@ -13,7 +13,7 @@ const basketSlice = createSlice({
         
     },
     removeBasketItem: (state, { payload }) => {
-      state.items = [...state.items].filter((e) => e.name != payload.name) 
+      state.items = [...state.items].filter((e) => e.name !== payload.name) 
       state.nutrientsSum = calcNutrientsSum(current(state).items)
     },
   },

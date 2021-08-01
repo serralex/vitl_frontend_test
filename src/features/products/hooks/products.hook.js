@@ -9,7 +9,7 @@ export const useProducts = () => {
 
   useEffect(() => {
     dispatch(getProducts())
-  }, [])
+  }, [dispatch])
 
   return {list, config}
 }

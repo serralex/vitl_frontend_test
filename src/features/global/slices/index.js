@@ -3,15 +3,24 @@ import { createSlice } from '@reduxjs/toolkit'
 const globalSlice = createSlice({
   name: 'global',
   initialState: {
-    isModalOpen: false
+    dialog: {
+      isDialogOpen: false,
+      heading: '',
+      content: ''
+    },
+    isOffCanvasOpen: false
   },
   reducers: {
-    setModalOpen: (state, { payload }) => {
-      state.isModalOpen = payload
+    setDialog: (state, { payload }) => {
+      state.dialog = payload
+    },
+
+    setOffCanvasOpen: (state, { payload }) => {
+      state.isOffCanvasOpen = payload
     },
   },
 })
 
 export const globalReducer = globalSlice.reducer
 
-export const { setModalOpen } = globalSlice.actions
+export const {setDialog, setOffCanvasOpen } = globalSlice.actions

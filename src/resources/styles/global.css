@@ -33,3 +33,21 @@ h1{
     font-size: 26px;
     line-height: 32px;
 }
+
+.modalClose{
+    position: absolute;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 90px;
+    font-size: 36px;
+    font-family: Hurme,SofiaProBold,Helvetica,Arial,Sans-Serif;
+    cursor: pointer;
+    transition: .3s color ease;
+}

@@ -3,9 +3,10 @@ import { addItemToBasket, calcNutrientsSum } from '../../../../features/basket/s
 import { Divider, Section } from '../../../../resources/styles/globalStyles'
 import ProductItem from '../../../../ui/products/ProductItem'
 
-import { setModalOpen } from '../../../global/slices'
+import { setDialog, setOffCanvasOpen } from '../../../global/slices'
 import { formatProductItem } from './config'
 import { StyledProductList } from './style'
+
 
 const ProductList = ({list}) =>{
 
@@ -13,21 +14,33 @@ const ProductList = ({list}) =>{
     const {items} = useSelector((state) => state.basket)
     const {tolerableUpperLimits} = useSelector((state) => state.products.config)
 
+
     const handleClick = (product) =>{
-        const isProductAlready = items.some(e => e.name == product.name)
+        console.log('f')
+        const isProductAlready = items.some(e => e.name === product.name)
 
         const updatedNutrientsSum = calcNutrientsSum([...items, product])
-        const exceedTul = updatedNutrientsSum.some(element => tolerableUpperLimits.some((e) => e.id == element.id && element.amount > e.amount))
+        const exceedTul = updatedNutrientsSum.some(element => tolerableUpperLimits.some((e) => e.id === element.id && element.amount > e.amount))
 
-        exceedTul || isProductAlready
-        ? console.log('no puedes')
-        : dispatch(addItemToBasket(product))
-
-        dispatch(setModalOpen(true))
+        if (isProductAlready) dispatch(setOffCanvasOpen(true))
+        else{
+            if(exceedTul){
+                
+                dispatch(setDialog({
+                    isDialogOpen: true,
+                    heading: 'This product cannot be added to your basket',
+                    content: 'Adding this product to your basket would exceed a nutrient TUL'
+                }))  
+            }
+            else{
+                dispatch(addItemToBasket(product))
+                dispatch(setOffCanvasOpen(true))
+            }
+        }
     }
 
     return(
-        <Section style={{marginTop: 24, textAlign:'center'}}>
+        <Section style={{marginTop: 48, textAlign:'center'}}>
             <h1>Products</h1>
             <Divider/>
             <StyledProductList>
@@ -35,7 +48,7 @@ const ProductList = ({list}) =>{
                     const formatedProductItem = formatProductItem({name, price, nutrients, onHandleClick:handleClick})
 
                     return (
-                    <ProductItem {...formatedProductItem}/>
+                        <li key={name}><ProductItem {...formatedProductItem}/></li>
                     )
                 })
                 }
